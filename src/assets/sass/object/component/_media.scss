@@ -1,0 +1,37 @@
+/* 
+# media
+
+card、containerと組み合わせて使う
+
+```
+<div class="c-container">
+  <div class="c-media">
+    <div class="c-media__content">
+      <img src="http://wild-styles.com/wp-content/uploads/2014/06/wildstyles_messi02.jpg" width="100%" alt="">
+    </div>
+    <div class="c-media__content">
+      right
+    </div>
+  </div>
+</div>
+```
+*/
+
+.c-media{
+  display: table;
+  width: 100%;
+  position: relative;
+}
+
+
+// Element
+// --------------------
+.c-media__content{
+  display: table-cell;
+  vertical-align: middle;
+  padding-right: $margin-large;
+}
+
+.c-media__text__clmap{
+  @include line-clamp(3);
+}

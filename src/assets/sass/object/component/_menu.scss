@@ -1,0 +1,83 @@
+/*
+# menu
+
+```
+<div class="c-container">
+  <ul class="c-menu">
+    <li class="c-menu__item">
+      <a href="#">
+        メニュー1
+        <i class="c-menu__item__icon fa fa-angle-right"></i>
+      </a>
+    </li>
+    <li class="c-menu__item">
+      <a href="#">
+        メニュー2
+        <i class="c-menu__item__icon fa fa-angle-right"></i>
+      </a>
+    </li>
+    <li class="c-menu__item">
+      <a href="#">
+        メニュー3
+        <i class="c-menu__item__icon fa fa-angle-right"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+```
+
+ */
+ .c-menu{
+  list-style: none;
+}
+
+// Modifier
+// --------------------
+.c-menu--border{
+  border-top: solid 1px $border-lighten;
+  
+  .c-menu__item:last-child{
+    border-bottom: solid 1px $border-lighten;   
+  }
+}
+
+// Element
+// --------------------
+.c-menu__item{
+  border-bottom: solid 1px $border-lighten;
+  position: relative;
+  padding: $margin-small;
+  display: block;
+  
+  &:last-child{
+    border: 0;
+  }
+
+  a{
+    display: block;
+    @include border-radius(4);
+    padding: $margin-base $margin-large-xx $margin-base $margin-base;
+    text-decoration: none;
+    
+    &:hover{
+      background: $bg-default;
+    }
+  }
+
+  a.is-active{
+    background: $bg-primary;
+    color: $text-color-white;
+    
+    &:hover{
+      background: lighten($bg-primary, 10%);
+    }
+  }
+}
+
+.c-menu__item__icon{
+  position: absolute;
+  right: $margin-large;
+  top: 50%;
+  margin-top: -8px;
+  color: $text-color-lighten;
+}

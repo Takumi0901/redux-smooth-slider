@@ -1,0 +1,48 @@
+{
+  "name": "",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dashboard -- webpack-dev-server -d --history-api-fallback --hot --inline --port 4000",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "webpack-dashboard -- webpack -d --watch",
+    "build": "./node_modules/webpack/bin/webpack.js -p"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Takumi0901/react-redux-webpack.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.13.2",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.13.2",
+    "babel-preset-react": "^6.11.1",
+    "redux-devtools": "^3.0.1",
+    "redux-devtools-dock-monitor": "^1.0.1",
+    "redux-devtools-log-monitor": "^1.0.2",
+    "redux-logger": "^2.6.1",
+    "webpack": "^1.13.1",
+    "webpack-dashboard": "^0.1.8",
+    "webpack-dev-server": "^1.14.1",
+    "webpack-init": "^0.1.1"
+  },
+  "dependencies": {
+    "css-loader": "^0.25.0",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "history": "^4.3.0",
+    "node-sass": "^3.10.1",
+    "react": "^15.3.0",
+    "react-dom": "^15.3.0",
+    "react-redux": "^4.4.5",
+    "react-router": "^2.8.1",
+    "react-router-redux": "^4.0.6",
+    "redux": "^3.5.2",
+    "redux-form": "6.0.5",
+    "redux-router": "^2.1.2",
+    "sass-loader": "^4.0.2",
+    "style-loader": "^0.13.1"
+  }
+}
