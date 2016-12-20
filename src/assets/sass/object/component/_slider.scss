@@ -1,0 +1,128 @@
+/*
+#slider
+
+```
+
+```
+
+*/
+
+.c-slider {
+  overflow: hidden;
+  display: block;
+  position: relative;
+  width: 100%;
+  margin-bottom: $margin-large-x;
+}
+
+.c-slider__content {
+  display: block;
+  overflow: hidden;
+  list-style: none;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+.c-slider__item {
+  float: left;
+  text-align: center;
+  display: -webkit-box; // iOS7対応
+  display: -moz-box;
+  display: box; // iOS7対応
+  display: -webkit-flex; // safari（PC）用
+  display: -ms-flexbox; // IE10
+  display: flex;
+  -webkit-box-align: center; // Androidブラウザ用
+  -ms-flex-align: center; // IE10
+  -webkit-align-items: center; // safari（PC）用
+  align-items: center;
+
+  &__inner {
+    width: 100%;
+
+    img {
+      //max-height: 360px;
+      max-width: 100%;
+      display: block;
+      height: auto;
+    }
+  }
+}
+
+.c-slider__item--no-image {
+  float: none;
+  background: $bg-white;
+
+  .c-slider__item__inner img {
+    max-height: 400px;
+  }
+}
+
+.c-slider__item--len1 {
+  float: none;
+  margin: 0 auto;
+
+  .c-slider__item__inner {
+    vertical-align: top;
+  }
+
+  .c-slider__item__inner img {
+    max-height: 400px;
+  }
+}
+
+.c-slider__pager {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+
+  &__inner {
+    @include opacity(.7);
+
+    background: $bg-primary;
+    padding: $margin-small $margin-base;
+    color: $text-color-white;
+    font-size: 12px;
+    display: inline-block;
+  }
+}
+
+.c-slider__btn-wrap{
+  position: absolute;
+  top: 50%;
+  margin-top: -16px;
+  line-height: 14px;
+  font-size: 14px;
+  background: $primary-color;
+  width: 28px;
+  height: 41px;
+  padding: $margin-small;
+
+  @include opacity(.7);
+
+  &--next {
+    right: $margin-small;
+
+    .c-slider__btn{
+      background: url("/images/arrow.png") no-repeat -22px 0;
+    }
+  }
+
+  &--prev {
+    left: $margin-small;
+
+    .c-slider__btn{
+      background: url("/images/arrow.png") no-repeat 0 0;
+    }
+  }
+}
+
+.c-slider__btn {
+  width: 20px;
+  height: 33px;
+}

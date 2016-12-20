@@ -12,12 +12,10 @@ class App extends Component {
     const {children} = this.props
     return (
       <div>
-        <div className="l-wrapper">
-          <div className="c-container">
-            {children}
-          </div>
+        <div className="c-container">
+          {children}
         </div>
-        <DevTools />
+        {/*<DevTools />*/}
       </div>
     )
   }

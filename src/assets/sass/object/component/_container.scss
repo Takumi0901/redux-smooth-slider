@@ -18,19 +18,15 @@
 */
 
 .c-container{
-  margin:0 $margin-large $margin-large-x;
+  width: 100%;
+  margin:0 auto $margin-large-x;
 }
 
-// Modifier
+// PC only
 // --------------------
-.c-container--small{
-  margin:0 $margin-large-x $margin-large-x;
-}
-
-.c-container--x-small{
-  margin:0 $margin-large-xx $margin-large-x;
-}
-
-.c-container--full{
-  margin: 0 0 $margin-large-x;
+@media ( min-width : $breakpoint ) {
+  .c-container{
+    max-width: 800px;
+    margin:0 auto $margin-large-x;
+  }
 }

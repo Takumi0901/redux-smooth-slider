@@ -8,7 +8,7 @@ import rootReducer from './RootReducer'
 const reduxRouterMiddleware = routerMiddleware(browserHistory)
 const logger = createLogger({logger:console})
 export default function configureStore(initialState) {
-  var composes = compose(
+  let composes = compose(
       applyMiddleware(logger, reduxRouterMiddleware),
       DevTools.instrument()
     )
