@@ -1,5 +1,6 @@
 import React from'react'
-import {PropTypes} from 'react'
+import SliderBtns from '../components/SliderBtns'
+import SliderPager from '../components/SliderPager'
 
 export default class Slider extends React.Component {
 
@@ -89,7 +90,7 @@ export default class Slider extends React.Component {
   render() {
     const {items, contentWidth, slideCurrent, slideDirection, movePageX,} = this.props
 
-    const itemsLength = items && items.length
+    const itemLength = items && items.length
 
     {/** initialize **/}
     let pageNum, beforeClone, afterClone, contentStyle, itemStyle
@@ -100,27 +101,27 @@ export default class Slider extends React.Component {
     if(slideCurrent == 1 && slideDirection == 'next'){
       pageNum = 1
       contentStyle = {
-        width: contentWidth * itemsLength + (contentWidth * 2),
+        width: contentWidth * itemLength + (contentWidth * 2),
         WebkitTransform: 'translate3d(' + -contentWidth + 'px, 0, 0)',
         transform: 'translate3d(' + -contentWidth + 'px, 0, 0)'
       }
-    }else if(slideCurrent == itemsLength && slideDirection === 'prev'){
-      pageNum = itemsLength
+    }else if(slideCurrent == itemLength && slideDirection === 'prev'){
+      pageNum = itemLength
       contentStyle = {
-        width: contentWidth * itemsLength + (contentWidth * 2),
-        WebkitTransform: 'translate3d(' + -contentWidth * itemsLength + 'px, 0, 0)',
-        transform: 'translate3d(' + -contentWidth * itemsLength + 'px, 0, 0)'
+        width: contentWidth * itemLength + (contentWidth * 2),
+        WebkitTransform: 'translate3d(' + -contentWidth * itemLength + 'px, 0, 0)',
+        transform: 'translate3d(' + -contentWidth * itemLength + 'px, 0, 0)'
       }
     }else{
       if(slideCurrent == 0){
         pageNum = 1
-      }else if(slideCurrent > itemsLength){
-        pageNum = itemsLength
+      }else if(slideCurrent > itemLength){
+        pageNum = itemLength
       }else {
         pageNum = slideCurrent
       }
       contentStyle = {
-        width: contentWidth * itemsLength + (contentWidth * 2),
+        width: contentWidth * itemLength + (contentWidth * 2),
         transition: '-webkit-transform 300ms ease',
         transition: 'transform 300ms ease',
         WebkitTransform: 'translate3d(' + distance + 'px, 0, 0)',
@@ -176,20 +177,11 @@ export default class Slider extends React.Component {
           {item}
           {afterClone}
         </ul>
-        <div className="c-slider__btn-wrap c-slider__btn-wrap--next">
-          <div
-            className="c-slider__btn c-slider__btn--next"
-            onClick={this.handleNextSliding.bind(this)}
-          ></div>
-        </div>
-        <div className="c-slider__btn-wrap c-slider__btn-wrap--prev">
-          <div
-            className="c-slider__btn c-slider__btn--prev"
-            onClick={this.handlePrevSliding.bind(this)}
-          ></div>
-        </div>
-        <div className="c-slider__pager"><p className="c-slider__pager__inner">{pageNum} / {itemsLength}</p></div>
-
+        <SliderBtns
+          handleNextSliding={this.handleNextSliding.bind(this)}
+          handlePrevSliding={this.handlePrevSliding.bind(this)}
+        />
+        <SliderPager pageNum={pageNum} itemLength={itemLength}/>
       </div>
     )
   }
