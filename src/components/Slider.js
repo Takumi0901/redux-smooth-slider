@@ -4,12 +4,12 @@ import {PropTypes} from 'react'
 export default class Slider extends React.Component {
 
   constructor(props) {
-    super(props);
+    super(props)
   }
 
   componentDidMount() {
-    const {handleResize, contentWidth, imageData} = this.props
-    handleResize(this.refs.slider.clientWidth, this.refs.slider.clientHeight)
+    const {handleResize} = this.props
+    handleResize(this.refs.slider.clientWidth)
     window.addEventListener('resize', this.handleResize.bind(this))
   }
 
@@ -20,8 +20,7 @@ export default class Slider extends React.Component {
   /** リサイズされるたびにSliderのWidthを取得 **/
   handleResize(){
     const {handleResize} = this.props
-
-    handleResize(this.refs.slider.clientWidth, this.refs.slider.clientHeight)
+    handleResize(this.refs.slider.clientWidth)
   }
 
 
@@ -88,7 +87,7 @@ export default class Slider extends React.Component {
   }
 
   render() {
-    const {items, contentWidth, contentHeight, slideCurrent, slideDirection, movePageX,} = this.props
+    const {items, contentWidth, slideCurrent, slideDirection, movePageX,} = this.props
 
     const itemsLength = items && items.length
 
@@ -136,14 +135,14 @@ export default class Slider extends React.Component {
 
     {/** item map **/}
     const item = items && items.map((item, e) => {
-        return (
-          <li key={e} className="c-slider__item" style={itemStyle}>
-            <div className="c-slider__item__inner">
-              <img src={item.image} alt=""/>
-            </div>
-          </li>
-        )
-      })
+      return (
+        <li key={e} className="c-slider__item" style={itemStyle}>
+          <div className="c-slider__item__inner">
+            <img src={item.image} alt=""/>
+          </div>
+        </li>
+      )
+    })
 
 
     {/** beforeClone ループ用 **/}
@@ -196,9 +195,17 @@ export default class Slider extends React.Component {
   }
 }
 
-
-Slider.prpTypes = {
+Slider.propTypes = {
   items: React.PropTypes.array,
   classes: React.PropTypes.array,
-  type: React.PropTypes.string
-};
+  type: React.PropTypes.string,
+  handleResize: React.PropTypes.func,
+  handleClickSliding: React.PropTypes.func,
+  slideTouchStart: React.PropTypes.func,
+  slideTouchMove: React.PropTypes.func,
+  slideCurrent: React.PropTypes.number,
+  startPageX: React.PropTypes.any,
+  movePageX: React.PropTypes.number,
+  contentWidth: React.PropTypes.number,
+  slideDirection: React.PropTypes.string
+}

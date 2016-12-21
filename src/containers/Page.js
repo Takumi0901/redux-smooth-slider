@@ -1,15 +1,14 @@
 import { bindActionCreators } from 'redux'
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import {pushState} from 'redux-router'
 import Slider from '../components/Slider'
 import {getContentSize, sliding, slideTouchStart, slideTouchMove, clearSlide}  from '../redux/modules/Slider'
 
 
 class page1 extends Component {
 
-  handleResize(width, height){
-    this.props.getContentSize(width, height)
+  handleResize(width){
+    this.props.getContentSize(width)
   }
 
   handleClickSliding(current, slideDirection){
@@ -23,7 +22,7 @@ class page1 extends Component {
   }
 
   render() {
-    const {contentWidth, contentHeight, slideCurrent, slideDirection, startPageX, movePageX} = this.props
+    const {contentWidth, slideCurrent, slideDirection, startPageX, movePageX} = this.props
     return (
       <div>
         <Slider
@@ -35,7 +34,6 @@ class page1 extends Component {
             {image: '/images/005.jpg'}
           ]}
           contentWidth={contentWidth}
-          contentHeight={contentHeight}
           handleResize={this.handleResize.bind(this)}
           handleClickSliding={this.handleClickSliding.bind(this)}
           slideCurrent={slideCurrent}
@@ -66,3 +64,15 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(page1)
+
+page1.propTypes = {
+  getContentSize: React.PropTypes.func,
+  sliding: React.PropTypes.func,
+  slideTouchStart: React.PropTypes.func,
+  slideTouchMove: React.PropTypes.func,
+  contentWidth: React.PropTypes.number,
+  slideCurrent: React.PropTypes.number,
+  slideDirection: React.PropTypes.string,
+  startPageX: React.PropTypes.any,
+  movePageX: React.PropTypes.number
+}

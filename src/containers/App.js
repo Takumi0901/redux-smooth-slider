@@ -1,11 +1,14 @@
 import { bindActionCreators } from 'redux'
 import React, { Component } from 'react'
-import {ReactRouter, Link} from 'react-router';
 import { connect } from 'react-redux'
 import DevTools from './DevTools'
-import {pushState} from 'redux-router'
+
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+  }
+
   componentWillMount() {}
 
   render() {
@@ -21,7 +24,7 @@ class App extends Component {
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps() {
   return {}
 }
 
@@ -30,3 +33,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)
+
+App.propTypes = {
+  children: React.PropTypes.object.isRequired
+}

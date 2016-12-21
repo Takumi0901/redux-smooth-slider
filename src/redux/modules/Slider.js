@@ -6,11 +6,10 @@ export const SLIDE_TOUCH_MOVE = 'SLIDE_TOUCH_MOVE'
 export const SLIDE_CLEAR = 'SLIDE_CLEAR'
 
 // Action
-export function getContentSize(width, height) {
+export function getContentSize(width) {
   return {
     type: GET_CONTENT_SIZE,
-    contentWidth: width,
-    contentHeight: height
+    contentWidth: width
   }
 }
 
@@ -42,13 +41,9 @@ export function clearSlide() {
   }
 }
 
-
-const InitialState = {contentWidth: 1, contentHeight: 1, slideCurrent: 1, slideDirection: '', startPageX: {}, movePageX: 0}
-
 // Reducer
 export function sliderReducer(state = {
   contentWidth: 1,
-  contentHeight: 300,
   slideCurrent: 1,
   slideDirection: '',
   startPageX: {},
@@ -56,21 +51,21 @@ export function sliderReducer(state = {
 }, action) {
   const {type} = action
   switch (type) {
-    case GET_CONTENT_SIZE:
-      return Object.assign({}, state, {contentWidth: action.contentWidth, contentHeight: action.contentHeight})
-    case SLIDING:
-      return Object.assign({}, state, {slideCurrent: action.slideCurrent, slideDirection: action.slideDirection, movePageX: 0})
-    case SLIDE_TOUCH_START:
-      return Object.assign({}, state, {startPageX: action.startPageX,})
+  case GET_CONTENT_SIZE:
+    return Object.assign({}, state, {contentWidth: action.contentWidth})
+  case SLIDING:
+    return Object.assign({}, state, {slideCurrent: action.slideCurrent, slideDirection: action.slideDirection, movePageX: 0})
+  case SLIDE_TOUCH_START:
+    return Object.assign({}, state, {startPageX: action.startPageX})
 
-    case SLIDE_TOUCH_MOVE:
-      return Object.assign({}, state, {movePageX: action.movePageX})
+  case SLIDE_TOUCH_MOVE:
+    return Object.assign({}, state, {movePageX: action.movePageX})
 
-    case SLIDE_CLEAR:
-      return Object.assign({}, state, {contentWidth: 1, contentHeight: 1, slideCurrent: 1, slideDirection: '', startPageX: {}, movePageX: 0})
+  case SLIDE_CLEAR:
+    return Object.assign({}, state, {contentWidth: 1, slideCurrent: 1, slideDirection: '', startPageX: {}, movePageX: 0})
 
-    default:
-      return state;
+  default:
+    return state
   }
 }
 
