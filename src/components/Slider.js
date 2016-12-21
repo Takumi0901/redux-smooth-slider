@@ -189,8 +189,6 @@ export default class Slider extends React.Component {
 
 Slider.propTypes = {
   items: React.PropTypes.array,
-  classes: React.PropTypes.array,
-  type: React.PropTypes.string,
   handleResize: React.PropTypes.func,
   handleClickSliding: React.PropTypes.func,
   slideTouchStart: React.PropTypes.func,
